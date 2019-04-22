@@ -31,7 +31,7 @@ public class Bluck {
         }
 
         for (channel c: chans) {
-            System.out.println("Answer for " + c.readLong() + "to" + c.readLong() + "is" + c.readLong());
+            System.out.println("Answer for " + c.readInt() + " to " + c.readInt() + " is " + c.readInt());
         }
         System.out.println("Total requests handled: " + tree.getRequestCount());
         curtask.end();
