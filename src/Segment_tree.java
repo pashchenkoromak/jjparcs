@@ -32,6 +32,7 @@ public class Segment_tree implements Serializable {
     
     private void build(ArrayList<Integer> a, Integer v, Integer tl, Integer tr)
     {
+        System.out.println(a.size() + " " + v + " " + tl + " " + tr);
         if (tl == tr)
             t.add(v, a.get(tl));
         else {
