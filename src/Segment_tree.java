@@ -25,8 +25,9 @@ public class Segment_tree implements Serializable {
             build(list, 1, 0, list.size() - 1);
         } catch (Exception e)
         {
-
+            
         }
+        System.out.println(t.size());
     }
     
     private void build(ArrayList<Integer> a, Integer v, Integer tl, Integer tr)
