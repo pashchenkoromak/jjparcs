@@ -16,13 +16,13 @@ public class Segment_tree implements Serializable {
         requestCount = new Integer(0);
 
         try {
-        Scanner s = new Scanner(new File(filepath));
-        ArrayList<Integer> list = new ArrayList<Integer>(s.nextInt());
-        while (s.hasNext()){
-            list.add(s.nextInt());
+            Scanner s = new Scanner(new File(filepath));
+            ArrayList<Integer> list = new ArrayList<Integer>(s.nextInt());
+            while (s.hasNext()){
+                list.add(s.nextInt());
         }
-        s.close();
-        build(list, 1, 0, list.size() - 1);
+            s.close();
+            build(list, 1, 0, list.size() - 1);
         } catch (Exception e)
         {
 
@@ -54,6 +54,8 @@ public class Segment_tree implements Serializable {
 
     private Integer sum (Integer v, Integer tl, Integer tr, Integer l, Integer r) 
     {
+        if (v < 0)
+            return 0;
         System.out.println(v + " " + tl + " " + tr + " " + l + " " + r);
         if (l > r)
             return 0;
