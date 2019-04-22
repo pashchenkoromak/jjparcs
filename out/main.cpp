@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    int n = 1000000;
+    int n = 1000;
     fstream f("nums");
     f << n << '\n';
     int k = 31;
@@ -16,7 +16,7 @@ int main()
     
     }
     fstream g("quests");
-    int m = 1000000;
+    int m = 1000;
     g << m << '\n';
     for(int i = 0; i < m; i++)
     {
