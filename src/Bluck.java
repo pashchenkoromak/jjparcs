@@ -23,15 +23,15 @@ public class Bluck {
 
             p.execute("Requester");    
             c.write(tree);
-            c.write(sc.nextInt());
-            c.write(sc.nextInt());
+            c.write(sc.nextLong());
+            c.write(sc.nextLong());
             
             points.add(p);
             chans.add(c);
         }
 
         for (channel c: chans) {
-            System.out.println("Answer for " + c.readInt() + " to " + c.readInt() + " is " + c.readInt());
+            System.out.println("Answer for " + c.readLong() + " to " + c.readLong() + " is " + c.readLong());
         }
         System.out.println("Total requests handled: " + tree.getRequestCount());
         curtask.end();
