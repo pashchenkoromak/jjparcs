@@ -9,7 +9,7 @@ public class Requester implements AM {
     long l = info.parent.readLong();
     long r = info.parent.readLong();
 	System.out.println(l + " " + r);
-    int sum = tree.getSum(l, r);
+    long sum = tree.getSum(l, r);
 	info.parent.write(l);
     info.parent.write(r);
     info.parent.write(sum);
