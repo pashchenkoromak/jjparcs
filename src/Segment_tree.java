@@ -44,7 +44,7 @@ public class Segment_tree implements Serializable {
     private long sum (Integer v, Integer tl, Integer tr, long l, long r) 
     {
         long ans = 0;
-        for(long i = l; i < r; i++)
+        for(long i = l; i <= r; i++)
             ans += (t[(int)i]);
         return ans;
     }
