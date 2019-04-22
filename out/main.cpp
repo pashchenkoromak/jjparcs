@@ -15,7 +15,7 @@ int main()
     
     }
     fstream g("quests");
-    int m = 100000;
+    int m = 1000;
     g << m << '\n';
     for(int i = 0; i < m; i++)
     {
