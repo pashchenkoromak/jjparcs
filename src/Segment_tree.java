@@ -54,6 +54,7 @@ public class Segment_tree implements Serializable {
 
     private Integer sum (Integer v, Integer tl, Integer tr, Integer l, Integer r) 
     {
+        System.out.println(v + " " + tl + " " + tr + " " + l + " " + r);
         if (l > r)
             return 0;
         if (l == tl && r == tr)
