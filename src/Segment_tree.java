@@ -46,13 +46,13 @@ public class Segment_tree implements Serializable {
         return requestCount;
     }
 
-    public Integer getSum(Integer l, Integer r)
+    public long getSum(long l, long r)
     {
         requestCount++;
         return sum(1, 0, t.size() - 1, l, r);
     }
 
-    private Integer sum (Integer v, Integer tl, Integer tr, Integer l, Integer r) 
+    private long sum (Integer v, Integer tl, Integer tr, long l, long r) 
     {
         if (v < 0)
             return 0;
