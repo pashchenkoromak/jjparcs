@@ -4,30 +4,37 @@ import parcs.*;
 
 public class DFS implements AM {
     public void run(AMInfo info) {
-        Node n = (Node)info.parent.readObject();
-        System.out.println("[" + n.getId() + "] Build started.");
+        Node node = (Node)info.parent.readObject();
+        System.out.println("[" + node.getId() + "] Build started.");
 
         List<point> points = new ArrayList<>();
         List<channel> chans = new ArrayList<>();
-        for (Node d: n.getDeps()) {
+        
+        for (Node node_on_n: node.getDeps()) {
+            
             point p = info.createPoint();
             channel c = p.createChannel();
-            p.execute("DFS");
-            c.write(d);
+
+            p.execute("DFS");    
+            c.write(node_on_n);
+            
             points.add(p);
             chans.add(c);
         }
-        long sum = n.getTime();
+
+        long sum = node.getTime();
         for (channel c: chans) {
+        
             sum += c.readLong();
+        
         }
         try {
-            Thread.sleep(n.getTime());
+            Thread.sleep(node.getTime());
         } catch (InterruptedException e) {
             e.printStackTrace();
             return;
         }
-        System.out.println("[" + n.getId() + "] Build finished.");
+        System.out.println("[" + node.getId() + "] Build finished.");
         info.parent.write(sum);
     }
 }

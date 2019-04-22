@@ -7,38 +7,33 @@ import parcs.*;
 public class Bluck {
     public static void main(String[] args) throws Exception {
         task curtask = new task();
-        curtask.addJarFile("DFS.jar");
-        Node n = fromFile(curtask.findFile("input"));
-        System.out.println("Read input...");
-
+        curtask.addJarFile("Requester.jar");
+        Segment_tree tree = new Segment_tree(curtask.findFile("nums"));
+        
         AMInfo info = new AMInfo(curtask, null);
-        point p = info.createPoint();
-        channel c = p.createChannel();
-        System.out.println("Before execute...");
-        p.execute("DFS");
-        System.out.println("After execute...");
-        c.write(n);
-
-        System.out.println("Waiting for result...");
-        System.out.println("Result: " + c.readLong());
-        curtask.end();
-    }
-
-    public static Node fromFile(String filename) throws Exception {
-        Scanner sc = new Scanner(new File(filename));
+        List<point> points = new ArrayList<>();
+        List<channel> chans = new ArrayList<>();
+        
+        Scanner sc = new Scanner(new File("quests"));
         int m = sc.nextInt();
-        int s = sc.nextInt();
-        List<Node> nodes = new ArrayList<>();
-        for (int i = 0; i < m; i++) {
-            nodes.add(new Node(i + 1));
+        for(int i = 0; i < m; i++)
+        {
+            point p = info.createPoint();
+            channel c = p.createChannel();
+
+            p.execute("Requester");    
+            c.write(tree);
+            c.write(sc.nextInt());
+            c.write(sc.nextInt());
+            
+            points.add(p);
+            chans.add(c);
         }
-        for (Node n: nodes) {
-            n.setTime(sc.nextInt());
-            int k = sc.nextInt();
-            for (int j = 0; j < k; j++) {
-                n.addDep(nodes.get(sc.nextInt() - 1));
-            }
+
+        for (channel c: chans) {
+            System.out.println("Answer for " + c.readLong() + "to" + c.readLong() + "is" + c.readLong());
         }
-        return nodes.get(s - 1);
+        System.out.println("Total requests handled: " + tree.getRequestCount());
+        curtask.end();
     }
 }
