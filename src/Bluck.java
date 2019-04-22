@@ -13,6 +13,7 @@ public class Bluck {
         AMInfo info = new AMInfo(curtask, null);
         List<point> points = new ArrayList<>();
         List<channel> chans = new ArrayList<>();
+        long start = System.currentTimeMillis();
         
         Scanner sc = new Scanner(new File("quests"));
         int m = sc.nextInt();
@@ -33,7 +34,9 @@ public class Bluck {
         for (channel c: chans) {
 		    System.out.println("Answer for " + c.readLong() + " to " + c.readLong() + " is " + c.readLong());
         }
-        System.out.println("Total requests handled: " + tree.getRequestCount());
+        long end = System.currentTimeMillis();
+        float sec = (end - start) / 1000F; System.out.println(sec + " seconds");
+        System.out.println("Total time: " + sec);
         curtask.end();
     }
 }
